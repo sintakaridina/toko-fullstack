@@ -1,10 +1,21 @@
 @extends('layouts.admin')
  
 @section('content')
-    <div class="row mt-5 mb-5">
+
+<div class="col-md-12 mt-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('admin')}}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Kelola Barang</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="card">
+                <div class="card-body">
+    <div class="row mb-5">
         <div class="col-lg-12 margin-tb">
             <div class="float-left">
-                <h2>Tutorial CRUD Laravel 8 untuk Pemula - Ilmucoding.com</h2>
+                <h2>Kelola Barang</h2>
             </div>
             <div class="float-right">
                 <a class="btn btn-success" href="{{ route('post.create') }}"> Create Post</a>
@@ -17,7 +28,8 @@
         <p>{{ $message }}</p>
     </div>
     @endif 
- 
+            
+                    <div class="row">
     <table class="table table-bordered">
         <tr>
             <th width="20px" class="text-center">No</th>
@@ -44,7 +56,10 @@
         </tr>
         @endforeach
     </table>
- 
+
+ </div>
+ </div>
+ </div>
     {!! $posts->links() !!}
  
 @endsection

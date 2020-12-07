@@ -2,9 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <a href="{{ url('home')}}" class="btn btn-primary"><i class="fa fa-arrow-left"></i>Kembali</a>
-        </div>
+       
         <div class="col-md-12 mt-2">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -19,7 +17,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <img src="{{ url('uploads') }}/{{ $barang->gambar }}" class="rounded mx-auto d-block"
-                                width="100%" alt="">
+                                width="75%" alt="">
                         </div>
                         <div class="col-md-6 mt-5">
                             <h2>{{ $barang->nama_barang}}</h2>

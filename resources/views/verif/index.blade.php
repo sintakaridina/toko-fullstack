@@ -2,9 +2,6 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <a href="{{ url('home')}}" class="btn btn-primary"><i class="fa fa-arrow-left"></i>Kembali</a>
-        </div>
         <div class="col-md-12 mt-2">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -13,10 +10,14 @@
                 </ol>
             </nav>
         </div>
+		<div class="col-md-12 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
         <div class="col-lg-8 mx-auto my-5">	
 		@foreach($pembayaran as $p)
 				<p>Silahkan melakukan pembayaran ke rekening Bni a/n Sinta Karidina 00298827716 , dan mengunggah bukti pembayaran brupa struk/screenshoot transfer.</p>
-				Total tagihan : Rp. {{ $p->jumlah_harga }}
+				Total tagihan : Rp.{{ (number_format ($p->jumlah_harga)) }}
 				@endforeach
 				
  
@@ -51,6 +52,10 @@
 						@endforeach
 					</tbody>
 				</table>
+			</div>
+			</div>
+			</div>
+			</div>
 			</div>
     </div>
 </div>

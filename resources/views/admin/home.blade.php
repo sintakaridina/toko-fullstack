@@ -3,7 +3,9 @@
 <div class="container">
    <div class="row justify-content-center">
       <div class="col-md-12 mb-4">
-         <img src="{{ url('images/logo.png')}}" class="rounded mx-auto d-block" width="500" alt="">
+         <br>
+         <br>
+         <br>
       </div>
       <div class="col-md-4">
          <div class="card">

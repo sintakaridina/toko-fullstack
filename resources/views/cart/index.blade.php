@@ -25,7 +25,7 @@
     <div class="alert alert-success">
         <p>{{ $message }}</p>
     </div>
-    @endif 
+    @endif
  
     <table class="table table-bordered">
         <tr>
