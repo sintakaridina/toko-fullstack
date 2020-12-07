@@ -14,9 +14,10 @@ class PembayaranController extends Controller
 		$gambar = DB::table('pembayarans')
             ->join('pesanans', 'pembayarans.pesanan_id', '=', 'pesanans.id')
             ->where('pembayarans.user_id', Auth::user()->id)
-            ->get();
+			->get();
+		$pembayaran=Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->get();
 
-		return view('verif.index',['gambar' => $gambar]);
+		return view('verif.index',['gambar' => $gambar], ['pembayaran' => $pembayaran]);
 	}
  
 	public function proses_upload(Request $request){

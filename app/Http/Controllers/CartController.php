@@ -26,7 +26,7 @@ class CartController extends Controller
     return view('cart.index', ['carts' => $carts]);
     }
     else{
-    $carts = Cart::where('user_id', Auth::user()->id)->first();
+
     $cartsBarang = DB::table('carts')
             ->join('barangs', 'carts.barang_id', '=', 'barangs.id')
             ->where('carts.user_id', '=', Auth::user()->id)
@@ -44,10 +44,7 @@ $tanggal = Carbon::now();
 if($request->jumlah_pesan > $barang->stok) {
 return redirect('pesan/'.$id);
 }
-// cek validasi
-$cek_cart = Cart::where('barang_id', $barang->id)->first();
-// simpan ke database pesanan
-if (empty($cek_cart)) {
+
 $cart                = new Cart;
 $cart->user_id       = Auth::user()->id;
 $cart->barang_id     = $barang->id;
@@ -56,17 +53,8 @@ $cart->jumlah_harga  = $barang->harga;
 $cart->save();
 return redirect()->route('cart')
                         ->with('success','Barang berhasil ditambahkan ke keranjang.');
-}
-else {
-    $cart         = Cart::where('barang_id', $barang->id)->where('id', $cek_cart->id)->first();
-    $cart->jumlah_barang = $cart->jumlah_barang+$request->jumlah_pesan;
-    // harga sekarang
-    $harga_cart_baru    = $barang->harga*$request->jumlah_pesan;
-    $cart->jumlah_harga = $cart->jumlah_harga+$harga_cart_baru;
-    $cart->update();
-    return redirect()->route('cart')
-                        ->with('success','Barang berhasil ditambahkan ke keranjang.');
-    }
+
+
 // // jumlah total
 // $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
 // $pesanan->jumlah_harga = $pesanan->jumlah_harga+ $barang->harga*$request->jumlah_pesan;
@@ -120,6 +108,7 @@ $pesanan->update();
     }
     $cart         = Cart::where('user_id', Auth::user()->id);
     $cart->delete();
+
 	// alihkan halaman ke halaman
 	return redirect('/home');
 }

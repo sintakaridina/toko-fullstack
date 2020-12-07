@@ -14,16 +14,11 @@
             </nav>
         </div>
         <div class="col-lg-8 mx-auto my-5">	
-		@foreach($gambar as $g)
+		@foreach($pembayaran as $p)
 				<p>Silahkan melakukan pembayaran ke rekening Bni a/n Sinta Karidina 00298827716 , dan mengunggah bukti pembayaran brupa struk/screenshoot transfer.</p>
-				Total tagihan : Rp. {{ $g->jumlah_harga }}
-				@if(count($errors) > 0)
-				<div class="alert alert-danger">
-					@foreach ($errors->all() as $error)
-					{{ $error }} <br/>
-					@endforeach
-				</div>
-				@endif
+				Total tagihan : Rp. {{ $p->jumlah_harga }}
+				@endforeach
+				
  
 				<form action="/verif/proses" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
@@ -36,7 +31,14 @@
  
 					<input type="submit" value="Upload" class="btn btn-primary">
 				</form>
-				
+				@foreach($gambar as $g)
+				@if(count($errors) > 0)
+				<div class="alert alert-danger">
+					@foreach ($errors->all() as $error)
+					{{ $error }} <br/>
+					@endforeach
+				</div>
+				@endif
 				<table class="table table-bordered table-striped">
 					
 					<tbody>
