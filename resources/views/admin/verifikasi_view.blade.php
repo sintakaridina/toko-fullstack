@@ -23,28 +23,7 @@
             <th width="20px" class="text-center">No</th>
             <th>Title</th>
             <th>Status</th>
-            <th width="280px"class="text-center">Action</th>
-        </tr>
-        @foreach ($pesananNonVerif as $p)
-        <tr>
-            <td class="text-center">-</td>
-            <td>{{ $p->jumlah_harga }}</td>
-            <td>{{ $p->status }}</td>
-            <td class="text-center">
-            <a class="btn btn-info btn-sm" href="{{ url('admin/verifikasi_view/')}}/{{ $p->id}}">Show</a>
-            </td>
-        </tr>
-        @endforeach
-    </table>
-
-    <table class="table table-bordered">
-        <tr>
-        <div class="float-left">
-                <h4>Sudah Diverifikasi</h4>
-        </div>
-            <th width="20px" class="text-center">No</th>
-            <th>Title</th>
-            <th>Status</th>
+            <th>Bukti Pembayaran</th>
             <th width="280px"class="text-center">Action</th>
         </tr>
         @foreach ($pesananVerif as $p)
@@ -52,11 +31,18 @@
             <td class="text-center">-</td>
             <td>{{ $p->jumlah_harga }}</td>
             <td>{{ $p->status }}</td>
+            <td><img width="450px" src="{{ url('/uploads/'.$p->file) }}"></td>
             <td class="text-center">
-            Sudah Terverifikasi
+            
+            <form action="{{ url('admin/verifikasi')}}/{{$p->pesanan_id}}" method="post">
+@csrf
+<button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Verifikasi</button>
+</form>
             </td>
         </tr>
         @endforeach
     </table>
+
+ 
  
 @endsection

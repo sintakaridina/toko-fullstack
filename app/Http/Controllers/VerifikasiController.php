@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Pesanan;
+use DB;
 use Illuminate\Http\Request;
 
 class VerifikasiController extends Controller
@@ -18,14 +19,21 @@ class VerifikasiController extends Controller
 
         return view('admin.verifikasi', ['pesananNonVerif' => $pesananNonVerif , 'pesananVerif' => $pesananVerif]); 
     }
-
-    public function update($id, Request $request)
+    public function view($id)
+    {
+        
+        $pesananVerif = DB::table('pesanans')
+            ->join('pembayarans', 'pesanans.id', '=', 'pembayarans.pesanan_id')
+            ->where('pesanans.id', '=', $id)
+            ->get();
+        return view('admin.verifikasi_view', ['pesananVerif' => $pesananVerif]);;
+    }
+    public function update($id)
 {
- 
-    $pesanan = Pesanan::find($id);
-    $pesanan->status = 1;
-    $pesanan->save();
-    return redirect()->route('admin/verifikasi')
+    $pesananNonVerif = Pesanan::find($id);
+    $pesananNonVerif->status = 1;
+    $pesananNonVerif->update();
+    return redirect()->route('admin.verifikasi')
                         ->with('success','Berhasil Verifikasi!');
 }
 }

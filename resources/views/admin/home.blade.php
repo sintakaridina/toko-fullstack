@@ -1,30 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <div class="container">
    <div class="row justify-content-center">
       <div class="col-md-12 mb-4">
          <img src="{{ url('images/logo.png')}}" class="rounded mx-auto d-block" width="500" alt="">
       </div>
-      @foreach($barangs as $barang)
       <div class="col-md-4">
          <div class="card">
-            <img src="{{ url('uploads')}}/{{ $barang->gambar }}" class="card-img-top" alt="...">
            <div class="card-body">
-             <h5 class="card-title">{{ $barang->nama_barang }}</h5>
+             <h5 class="card-title">Menu Admin</h5>
               <p class="card-text">
-              <strong>Harga :</strong> Rp. {{ number_format($barang->harga) }}
+              <a href="/admin/post" class="btn btn-primary"> Kelola Barang</a>
               <hr>
-              <strong>Stok :</strong> {{ $barang->stok }}
-              <br>
-              <strong>Keterangan :</strong>
-              <br>
-              {{ $barang->keterangan}}
+              <a href="/admin/verifikasi" class="btn btn-primary"> Verifikasi Pembayaran</a>
               </p>
-              <a href="{{ url('pesan')}}/{{ $barang->id}}" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Pesan</a>
            </div>
          </div>
       </div>
-      @endforeach
    </div>
 </div>
 @endsection

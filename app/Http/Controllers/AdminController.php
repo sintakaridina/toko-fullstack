@@ -11,6 +11,10 @@ class AdminController extends Controller
    $this->middleware('auth:admin');
 }
 // protected $guard = 'admin';
+    public function home()
+    {
+    return view('admin.home');
+    }
 
     public function index()
     {
@@ -37,7 +41,7 @@ class AdminController extends Controller
  
         Barang::create($request->all());
  
-        return redirect()->route('admin.index')
+        return redirect()->route('post.index')
                         ->with('success','Barang berhasil ditambahkan.');
     }
  
@@ -62,7 +66,7 @@ class AdminController extends Controller
  
         $post->update($request->all());
  
-        return redirect()->route('admin.index')
+        return redirect()->route('post.index')
                         ->with('success','Barang berhasil diupdate!');
     }
  
@@ -70,7 +74,7 @@ class AdminController extends Controller
     {
         $post->delete();
  
-        return redirect()->route('admin.index')
+        return redirect()->route('post.index')
                         ->with('success','Barang berhasil dihapus.');
     }
 }

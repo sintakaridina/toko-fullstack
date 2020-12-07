@@ -15,4 +15,8 @@ class Barang extends Model
 {
    return $this->hasMany('App\PesananDetail','barang_id','id');
 }
+public function cart()
+{
+   return $this->hasMany('App\Cart','barang_id','id');
+}
 }
