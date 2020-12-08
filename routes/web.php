@@ -41,6 +41,8 @@ Route::get('/cart/checkout',[App\Http\Controllers\CartController::class, 'checko
 Route::get('/verif', [App\Http\Controllers\PembayaranController::class, 'upload'])->name('pembayaran');
 Route::get('/verif/hapus/{id}', [App\Http\Controllers\PembayaranController::class, 'delete']);
 Route::post('/verif/proses', [App\Http\Controllers\PembayaranController::class, 'proses_upload']);
+Route::get('/profil', [App\Http\Controllers\ProfilController::class, 'index'])->name('edit-profil');
+Route::post('/profil/edit', [App\Http\Controllers\ProfilController::class, 'update']);
 Route::get('admin/login', [App\Http\Controllers\Auth\AdminAuthController::class, 'getLogin'])->name('admin.login');
 Route::post('admin/login',[App\Http\Controllers\Auth\AdminAuthController::class, 'postLogin']);
 
