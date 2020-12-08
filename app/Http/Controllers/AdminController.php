@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Barang;
+use App\Models\Pesanan;
+use App\Models\User;
+use DB;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -76,5 +79,14 @@ class AdminController extends Controller
  
         return redirect()->route('post.index')
                         ->with('success','Barang berhasil dihapus.');
+    }
+    public function pesanan(){
+        $i=0;
+        $pesanan = DB::table('pesanans')
+            ->join('users', 'pesanans.user_id', '=', 'users.id')
+            ->where('pesanans.status', '=', '1')
+            ->get();
+    return view('admin.pesanan', ['pesanan' => $pesanan, 'i' => $i]);
+
     }
 }

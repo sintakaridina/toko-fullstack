@@ -14,6 +14,8 @@
               <p class="card-text">
               <a href="/admin/post" class="btn btn-primary"> Kelola Barang</a>
               <hr>
+              <a href="/admin/pesanan" class="btn btn-primary"> Kelola Pesanan</a>
+              <hr>
               <a href="/admin/verifikasi" class="btn btn-primary"> Verifikasi Pembayaran</a>
               </p>
            </div>

@@ -1,7 +1,18 @@
 @extends('layouts.admin')
  
 @section('content')
-    <div class="row mt-5 mb-5">
+<div class="col-md-12 mt-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('admin')}}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Verifikasi Pembayaran</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="card">
+                <div class="card-body">
+    
+    <div class="row mb-5">
         <div class="col-lg-12 margin-tb">
             <div class="float-left">
                 <h2>Verifikasi Pembayaran</h2>
@@ -27,7 +38,7 @@
         </tr>
         @foreach ($pesananNonVerif as $p)
         <tr>
-            <td class="text-center">-</td>
+            <td class="text-center">{{ ++$i }}</td>
             <td>{{ $p->jumlah_harga }}</td>
             <td>{{ $p->status }}</td>
             <td class="text-center">
@@ -49,7 +60,7 @@
         </tr>
         @foreach ($pesananVerif as $p)
         <tr>
-            <td class="text-center">-</td>
+            <td class="text-center">{{ ++$x }}</td>
             <td>{{ $p->jumlah_harga }}</td>
             <td>{{ $p->status }}</td>
             <td class="text-center">
@@ -58,5 +69,6 @@
         </tr>
         @endforeach
     </table>
- 
+ </div>
+ </div>
 @endsection

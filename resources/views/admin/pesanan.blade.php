@@ -1,10 +1,21 @@
 @extends('layouts.admin')
  
 @section('content')
+<div class="col-md-12 mt-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('admin')}}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Kelola Pesanan</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="card">
+                <div class="card-body">
+    
     <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">
             <div class="float-left">
-                <h2>Verifikasi Pembayaran</h2>
+                <h2>Daftar Pesanan</h2>
             </div>
         </div>
     </div>
@@ -15,34 +26,32 @@
     </div>
     @endif 
  
+ 
     <table class="table table-bordered">
         <tr>
         <div class="float-left">
-                <h4>Belum Diverifikasi</h4>
+                <h4>Sudah Diverifikasi</h4>
         </div>
             <th width="20px" class="text-center">No</th>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Bukti Pembayaran</th>
+            <th>Nama Pemesan</th>
+            <th>Alamat</th>
+            <th>Harga</th>
+            <th>Tanggal</th>
             <th width="280px"class="text-center">Action</th>
         </tr>
-        @foreach ($pesananVerif as $p)
+        @foreach ($pesanan as $p)
         <tr>
             <td class="text-center">{{ ++$i }}</td>
+            <td>{{ $p->name }}</td>
+            <td>{{ $p->alamat }}</td>
             <td>{{ $p->jumlah_harga }}</td>
             <td>{{ $p->status }}</td>
-            <td><img width="450px" src="{{ url('/uploads/'.$p->file) }}"></td>
             <td class="text-center">
-            
-            <form action="{{ url('admin/verifikasi')}}/{{$p->pesanan_id}}" method="post">
-@csrf
-<button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Verifikasi</button>
-</form>
+            Sudah Terverifikasi
             </td>
         </tr>
         @endforeach
     </table>
-
- 
- 
+ </div>
+ </div>
 @endsection

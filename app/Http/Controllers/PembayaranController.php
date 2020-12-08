@@ -10,6 +10,10 @@ use Auth;
  
 class PembayaranController extends Controller
 {
+	public function __construct()
+    {
+       $this->middleware('auth');
+    }
 	public function upload(){
 		$gambar = DB::table('pembayarans')
             ->join('pesanans', 'pembayarans.pesanan_id', '=', 'pesanans.id')

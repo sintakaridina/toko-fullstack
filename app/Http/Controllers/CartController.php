@@ -19,11 +19,12 @@ class CartController extends Controller
 
     public function index()
     {
+        $i=0;
         $carts = Cart::where('user_id', Auth::user()->id)->get();
         
     if (empty($carts)){
         $carts = Cart::where('user_id', Auth::user()->id)->get();
-    return view('cart.index', ['carts' => $carts]);
+    return view('cart.index', ['carts' => $carts, 'i' => $i]);
     }
     else{
 
@@ -31,7 +32,7 @@ class CartController extends Controller
             ->join('barangs', 'carts.barang_id', '=', 'barangs.id')
             ->where('carts.user_id', '=', Auth::user()->id)
             ->get();
-    return view('cart.index', ['cartsBarang' => $cartsBarang]);
+    return view('cart.index', ['cartsBarang' => $cartsBarang, 'i' => $i]);
     }
     }
 

@@ -13,20 +13,22 @@ class VerifikasiController extends Controller
     }
 
     public function index()
-    {
+    {   
+        $i=0;
+        $x=0;
         $pesananVerif = Pesanan::where('status', '1')->get(); 
         $pesananNonVerif = Pesanan::where('status', '0')->get(); 
 
-        return view('admin.verifikasi', ['pesananNonVerif' => $pesananNonVerif , 'pesananVerif' => $pesananVerif]); 
+        return view('admin.verifikasi', ['pesananNonVerif' => $pesananNonVerif , 'pesananVerif' => $pesananVerif , 'i' => $i , 'x' => $x]); 
     }
     public function view($id)
     {
-        
+        $i=0;
         $pesananVerif = DB::table('pesanans')
             ->join('pembayarans', 'pesanans.id', '=', 'pembayarans.pesanan_id')
             ->where('pesanans.id', '=', $id)
             ->get();
-        return view('admin.verifikasi_view', ['pesananVerif' => $pesananVerif]);;
+        return view('admin.verifikasi_view', ['pesananVerif' => $pesananVerif  , 'i' => $i]);
     }
     public function update($id)
 {

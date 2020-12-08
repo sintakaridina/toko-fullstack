@@ -37,7 +37,7 @@
         </tr>
         @foreach ($cartsBarang as $cart)
         <tr>
-            <td class="text-center">-</td>
+            <td class="text-center">{{ ++$i }}</td>
             <td>{{ $cart->nama_barang }}</td>
             <td>{{ $cart->jumlah_barang }}</td>
             <td>{{ $cart->jumlah_harga }}</td>

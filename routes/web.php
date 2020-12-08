@@ -52,6 +52,7 @@ Route::middleware('auth:admin')->group(function(){
     Route::get('admin/verifikasi', [App\Http\Controllers\VerifikasiController::class, 'index'])->name('admin.verifikasi');
     Route::get('admin/verifikasi_view/{id}', [App\Http\Controllers\VerifikasiController::class, 'view']);
     Route::post('admin/verifikasi/{id}', [App\Http\Controllers\VerifikasiController::class, 'update']);
+    Route::get('admin/pesanan', [App\Http\Controllers\AdminController::class, 'pesanan']);
    // Route::get('admin/home', [App\Http\Controllers\AdminController::class, 'index']);
     // Route::get('admin/show/{id}', [App\Http\Controllers\AdminController::class, 'show'])->name('show');
     
