@@ -68,7 +68,7 @@ public function checkout()
     $tanggal = Carbon::now();
     // menghapus data berdasarkan id yang dipilih
     $cart         = Cart::where('user_id', Auth::user()->id)->get();
-    $x=$cart->count();
+    $x=count($cart);
     for($i = 1;$i<=$x;$i++){
         $cart         = Cart::where('user_id', Auth::user()->id)->first();
         $barang  = Barang::where('id', $cart->barang_id)->first();
@@ -105,10 +105,10 @@ $pesanan_detail->update();
 $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
 $pesanan->jumlah_harga = $pesanan->jumlah_harga+ $barang->harga*$cart->jumlah_barang;
 $pesanan->update();
+$cart->delete();
 
     }
-    $cart         = Cart::where('user_id', Auth::user()->id);
-    $cart->delete();
+    
 
 	// alihkan halaman ke halaman
 	return redirect('/home');
