@@ -23,13 +23,8 @@ use App\Http\Controllers\VerifikasiController;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 Route::get('pesan/{id}', [App\Http\Controllers\PesanController::class, 'index'])->name('pesan');
-
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::post('pesan/{id}', [App\Http\Controllers\PesanController::class, 'pesan'])->name('pesan');
 Route::post('cart/{id}', [App\Http\Controllers\CartController::class, 'add']);

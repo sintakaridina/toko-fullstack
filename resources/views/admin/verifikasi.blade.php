@@ -32,15 +32,13 @@
                 <h4>Belum Diverifikasi</h4>
         </div>
             <th width="20px" class="text-center">No</th>
-            <th>Title</th>
-            <th>Status</th>
+            <th>Jumlah Harga</th>
             <th width="280px"class="text-center">Action</th>
         </tr>
         @foreach ($pesananNonVerif as $p)
         <tr>
             <td class="text-center">{{ ++$i }}</td>
             <td>{{ $p->jumlah_harga }}</td>
-            <td>{{ $p->status }}</td>
             <td class="text-center">
             <a class="btn btn-info btn-sm" href="{{ url('admin/verifikasi_view/')}}/{{ $p->id}}">Show</a>
             </td>
@@ -54,15 +52,13 @@
                 <h4>Sudah Diverifikasi</h4>
         </div>
             <th width="20px" class="text-center">No</th>
-            <th>Title</th>
-            <th>Status</th>
+            <th>Jumlah Harga</th>
             <th width="280px"class="text-center">Action</th>
         </tr>
         @foreach ($pesananVerif as $p)
         <tr>
             <td class="text-center">{{ ++$x }}</td>
             <td>{{ $p->jumlah_harga }}</td>
-            <td>{{ $p->status }}</td>
             <td class="text-center">
             Sudah Terverifikasi
             </td>
